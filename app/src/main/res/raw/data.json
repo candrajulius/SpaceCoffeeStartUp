@@ -1,0 +1,46 @@
+{
+  "message": "success",
+  "error": false,
+  "data_coffee": [
+    {
+      "name": "Kopi Gayo",
+      "description": "Kopi Gayo merupakan jenis kopi Arabika yang sudah terkenal di berbagai belahan dunia. Kopi ini di produksi di daerah aceh tengah tepatnya di dataran tinggi gayo. Di daratan tinggi gayo inilah pusat perkebunan dan produksi kopi terbaik di dunia di hasilkan. Kopi arabica gayo ini memiliki tekstur yang cukup halus dan memiliki aroma yang sangat khas yakni berbau tajam. Jenis kopi ini memiliki cita rasa yang khas dengan ciri utama aroma dan juga perisa yang sangat kompleks dengan kekentalan yang kuat. Kopi gayo ini memiliki aroma dan kenikmatan kopi yang sangat khas",
+      "cost": "Rp 45.000",
+      "price": "250 gram",
+      "photo": "https://raw.githubusercontent.com/candrajulius/SpaceCoffeeStartUp/master/kopi_gayo.png",
+      "growing_area": "Dataran Tinggi Gayo, yang meliputi 3 kabupaten yaitu, Aceh Tengah (Takengon), Bener Meriah, dan Gayo Lues. Ketinggian tanamnya berkisar antara 1200 – 1700 mdpl."
+    },
+    {
+      "name": "Kopi Sidikalang",
+      "description": "Kopi Sidikalang adalah sebutan untuk kopi robusta dan arabika yang dikembangkan di Kecamatan Sidikalang, ibu kota dari Kabupaten Dairi, Sumatra Utara. Wilayah perkebunan kopi Sidikalang berada di ketinggian 1.500 mdpl, berada di kawasan pegunungan Bukit Barisan. Kopi Sidikalang dianggap sebagai salah satu varietas kopi terbaik di Sumatra, bersama dengan kopi Gayo, Simalungun dll. Kopi Robusta Sidikalang terkenal memiliki tingkat keasaman yang rendah",
+      "cost": "Rp 45.000",
+      "price": "250 gram",
+      "photo": "https://raw.githubusercontent.com/candrajulius/SpaceCoffeeStartUp/master/kopi_sidikalang.png",
+      "growing_area": "Sidikalang dan sekitarnya dengan ketinggian sekitar 1,300 – 1,450 mdpl."
+    },
+    {
+      "name": "Kopi Mandailing",
+      "description": "Kopi mandailing adalah  kopi arabika yang berasal dari daerah Mandailing, Pegunungan Bukit Barisan, Sumatra utara. Kopi ini mempunyai cita rasa kekentalan yang bagus, keasaman medium, rasa floral dengan akhir rasa yang manis. Nyaman di perut. Jika kamu termasuk pecinta kopi yang memiliki perut atau pencernaan yang lebih sensitif, cobalah Kopi Mandailing. Jenis kopi ini memiliki tingkat keasaman yang cukup rendah, sehingga tidak akan menimbulkan asam lambung berlebih. Rasa Kopi Mandailing pun cenderung pas tidak terlalu asam dan manis.",
+      "cost": "Rp 45.000",
+      "price": "250 gram",
+      "photo": "https://raw.githubusercontent.com/candrajulius/SpaceCoffeeStartUp/master/kopi_maindailing.png",
+      "growing_area": "Kabupaten Mandailing Sumatera"
+    },
+    {
+      "name": "Kopi Lintong",
+      "description": "Kopi Lintong adalah kopi seasal yang dihasilkan di Lintong Nihuta, Kabupaten Humbang Hasundutan. Kopi Lintong merupakan salah satu kopi paling terkenal dari Sumatra, sejajar dengan kopi Mandailing dan kopi Gayo. Di pasar internasional, kopi Lintong bisa dipasarkan dengan berbagai nama, di antaranya Sumatra Blue Lintong, Blue Batak, Sumatra Lintong Mandheling, dan banyak lagi. Sama seperti kopi Dolok Sanggul, mayoritas petani kopi Lintong adalah petani kopi kecil yang menjual panen kopi tanpa pengolahan pascapanen. Kopi Lintong punya tekstur yang halus dan berbau tajam. Inilah keunggulan yang membuat kopi ini menjadi salah satu kopi yang paling laris. Kopi ini diproses dalam dua cara yaitu proses semi-washed dan dry-processed. Biji kopinya akan mengeluarkan rasa tanah dan rempah",
+      "cost": "Rp 45.000",
+      "price": "250 gram",
+      "photo": "https://raw.githubusercontent.com/candrajulius/SpaceCoffeeStartUp/master/kopi_lintong.png",
+      "growing_area": "daerah sekitaran kabupaten Humbang Hasundutan, yaitu kecamatan Lintong Nihuta (1,400-1,450 mdpl), kecamatan Dolok Sanggul (1,450-1,600 mdpl) dan sekitar Danau Toba."
+    },
+    {
+      "name":"Kopi Karo",
+      "description": "Saat ini, nama Kopi Karo memang belum seterkenal varietas Aceh Gayo atau Sidikalang yang sama-sama berasal dari Pulau Sumatera. Padahal Kopi Karo sudah terkenal di masa penjajahan Belanda bahkan berhasil diperdagangkan ke Eropa.\n\nKopi Karo memiliki sejarah yang juga panjang, sama dengan cerita jenis kopi di Indonesia lainnya. Jenis kopi ini sudah lama dikenal oleh orang asli Karo sebuah suku yang berasal dari dataran tinggi di Sumatera Utara.\n\nMasyarakat suku Karo memang terbiasa menanam pohon kopi sejak ratusan tahun lalu dan hingga kini menjadi komoditi perkebunan. Pohon kopi yang di tanam di dataran tinggi Karo berjenis varietas Arabika yang menjadi favorit banyak orang.\n\nVarietas Arabika Karo ini ditanam di ketinggian 500-2000 meter di atas permukaan laut. Ketinggian inilah yang juga turut andil membuat cita rasa serta karakteristik Kopi Karo, sehingga lebih unik.\n\nDitambah struktur tanahnya yang berada di kisaran pH 5,5-6,5 membuat Kopi Karo bisa tumbuh dengan baik. Proses pengolahan kopi setelah dipanen masih menggunakan proses tradisional atau natural yang dapat menjaga kualitasnya.",
+      "cost": "Rp 45.000",
+      "price": "250 gram",
+      "photo": "https://raw.githubusercontent.com/candrajulius/SpaceCoffeeStartUp/master/kopi_karo.png",
+      "growing_area": "Sekitar Berastagi, Kabanjahe dan kaki gunung Sinabung dengan ketinggian berkisar antara 1,275 – 1,400 mdpl."
+    }
+  ]
+}

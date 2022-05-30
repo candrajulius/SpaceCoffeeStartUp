@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Ersada Coffee</string>
+    <string name="menu_one">Kopi Kearifan Lokal Sumatera Utara</string>
+    <string name="item_description">Gambar</string>
+    <string name="text_subtitle">Teks Subtitle</string>
+    <string name="text_primary">Teks Judul</string>
+    <string name="menu_cart">Konfirmasi</string>
+    <string-array name="jenis_coffee">
+        <item>Bubuk Kopi</item>
+        <item>Biji Kopi</item>
+    </string-array>
+</resources>
