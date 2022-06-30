@@ -78,7 +78,7 @@
                 android:layout_height="30dp"
                 android:layout_marginStart="12dp"
                 android:contentDescription="@string/item_description"
-                android:src="@drawable/ersada_coffee"
+                android:src="@drawable/icon_my_app"
                 app:layout_constraintBottom_toBottomOf="@+id/textTitle"
                 app:layout_constraintStart_toEndOf="@id/backCardView"
                 app:layout_constraintTop_toTopOf="@+id/textTitle"

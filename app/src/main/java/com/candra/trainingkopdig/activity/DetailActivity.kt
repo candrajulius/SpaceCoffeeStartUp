@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import coil.load
 import com.candra.trainingkopdig.R
 import com.candra.trainingkopdig.databinding.ActivityDetailBinding
-import com.candra.trainingkopdig.helper.Animation
 import com.candra.trainingkopdig.helper.Animation.EXTRA_DATA
 import com.candra.trainingkopdig.model.data.Coffee
 
@@ -48,7 +47,7 @@ class DetailActivity: AppCompatActivity()
                     Toast.makeText(this@DetailActivity, dataBtn,Toast.LENGTH_SHORT).show()
                 }
                 cart.setOnClickListener {
-                    val intentData = Intent(this@DetailActivity,CartActivity::class.java).apply {
+                  Intent(this@DetailActivity,CartActivity::class.java).apply {
                         putExtra("data",data.name)
                     }.also { startActivity(it) }
                 }

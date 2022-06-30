@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -16,25 +17,47 @@ import java.text.DecimalFormat
 class CartActivity: AppCompatActivity()
 {
 
+    private var selectedValue = ""
     private val isValid = mutableListOf(false,false,false,false,false)
     private lateinit var binding: DialogFragmentCartBinding
     private val defaultStringBuy = "Beli sekarang"
     private var formatData = ""
+    private var selectedValuePayment = ""
+    private var valueNote = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DialogFragmentCartBinding.inflate(layoutInflater)
         setContentView(binding.root)
         validationData()
-        setAdapterKindCoffee()
 
         val intentData = intent.getStringExtra("data")
         binding.textInputNameCoffee.editText?.setText(intentData)
+
+        setDefaultPayment()
+
+        setDefaultKindCoffee()
+
+
+    }
+
+    private fun setDefaultKindCoffee(){
+        binding.rbBubuk.isChecked = true
     }
 
     @SuppressLint("SetTextI18n")
     private fun validationData(){
         with(binding){
+
+            edtRekening.setText(getString(R.string.nmr_rekening))
+
+            chipTunai.setOnClickListener {
+                setVisibility(false)
+            }
+            chipNonTunai.setOnClickListener {
+                setVisibility(true)
+            }
+
             textEditName.doAfterTextChanged {
                 val nameValid = it?.isNotBlank()?: false
                 isValid[0] = nameValid
@@ -96,15 +119,6 @@ class CartActivity: AppCompatActivity()
 
             binding.textInputNameCoffee.isEnabled = false
 
-//            textEditKopi.doAfterTextChanged {
-//                val kopiValid = it?.isNotBlank()?: false
-//                isValid[5] = kopiValid
-//                textInputNameCoffee.apply {
-//                    if (!kopiValid) error = "Kopi perlu diisi"
-//                    isErrorEnabled = !kopiValid
-//                }
-//                validationButton()
-//            }
 
             btnConfirmation.text = defaultStringBuy
 
@@ -116,21 +130,43 @@ class CartActivity: AppCompatActivity()
                 val nmrHp = textInputNmrHp.editText?.text.toString()
                 val nmrWa = textInputWa.editText?.text.toString()
                 val sachet = textInputSachet.editText?.text.toString()
-                val kindCoffee = textInputDropDown.editText?.text.toString()
                 val nameCoffee = textInputNameCoffee.editText?.text.toString()
-                sendMessageToWA(name,alamat,nmrHp,nmrWa,sachet,kindCoffee,nameCoffee)
+                val note = textInputNote.editText?.text.toString()
+
+                if (note.isEmpty()){
+                    valueNote = "Tidak ada catatan"
+                }else{
+                    valueNote = note
+                }
+
+                if (rgPilihanItem.checkedRadioButtonId > 0){
+                    when(rgPilihanItem.checkedRadioButtonId){
+                        R.id.rb_biji -> selectedValue = "Biji Kopi"
+                        R.id.rb_bubuk -> selectedValue = "Bubuk Kopi"
+                    }
+                }else{
+                    selectedValue = "nothing value"
+                }
+
+                if(chipTunai.isChecked){
+                    selectedValuePayment = chipTunai.text.toString()
+                }else if (chipNonTunai.isChecked){
+                    selectedValuePayment =  chipNonTunai.text.toString()
+                }
+                sendMessageToWA(name,alamat,nmrHp,nmrWa,sachet,selectedValue,nameCoffee,valueNote,selectedValuePayment)
             }
+
         }
     }
 
-    private fun setAdapterKindCoffee(){
-        val kindCoffee = resources.getStringArray(R.array.jenis_coffee)
-        val arrayAdapter = ArrayAdapter(this@CartActivity, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,kindCoffee)
-        binding.autoCompleteCoffee.setAdapter(arrayAdapter)
-    }
 
     private fun validationButton(){
         binding.btnConfirmation.isEnabled = isValid.filter { it }.size == 5
+    }
+
+    private fun setVisibility(show: Boolean){
+        binding.textInputRekening.visibility = if (show) View.VISIBLE else View.GONE
+        binding.catatanNmrRekening.visibility = if (show) View.VISIBLE else View.GONE
     }
 
     private fun sendMessageToWA(
@@ -140,16 +176,26 @@ class CartActivity: AppCompatActivity()
         nmrWa: String,
         sachet: String,
         kindCoffee: String,
-        nameCoffee: String
+        nameCoffee: String,
+        note: String,
+        pay: String
     )
     {
         val phone = 6282311558341
-        val sendMessage = "Nama Kopi: $nameCoffee \n Nama: $name, \n Alamat: $alamat, \n Nmr HP: $nmrHp, \n Nmr WA: $nmrWa, \n Sachet: $sachet, \n Jenis Kopi: $kindCoffee, \n Harga: $formatData"
+        val sendMessage = "Nama Kopi: $nameCoffee \n Nama: $name, \n Alamat: $alamat, \n Nmr HP: $nmrHp, \n Nmr WA: $nmrWa, \n Sachet: $sachet, \n Jenis Kopi: $kindCoffee, \n Harga: $formatData" +
+                "\n Catatan: $note \n Pembayaran: $pay"
         val parsingUri = Uri.parse("https://wa.me/$phone?text=$sendMessage")
         if (Animation.appInstalled(this@CartActivity,"com.whatsapp")){
             Intent(Intent.ACTION_VIEW,parsingUri).also { startActivity(it) }
         }else{
             Toast.makeText(this@CartActivity,"App is not installed",Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun setDefaultPayment(){
+        binding.apply {
+            chipTunai.isChecked = true
+            setVisibility(show = false)
         }
     }
 

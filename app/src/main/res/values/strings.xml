@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Ersada Coffee</string>
+    <string name="app_name">Happy Dance Coffee</string>
     <string name="menu_one">Kopi Kearifan Lokal Sumatera Utara</string>
     <string name="item_description">Gambar</string>
     <string name="text_subtitle">Teks Subtitle</string>
@@ -9,4 +9,5 @@
         <item>Bubuk Kopi</item>
         <item>Biji Kopi</item>
     </string-array>
+    <string name="nmr_rekening">006801064635500</string>
 </resources>

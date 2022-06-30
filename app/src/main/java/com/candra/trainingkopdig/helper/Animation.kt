@@ -22,7 +22,6 @@ import com.google.android.material.textview.MaterialTextView
 
 object Animation {
 
-    private val isValid = mutableListOf(false, false, false,false,false)
 
     const val EXTRA_DATA = "data"
 
@@ -40,8 +39,7 @@ object Animation {
 
 
     fun appInstalled(context: Context,uri: String): Boolean{
-        var appInstalled = false
-        appInstalled = try {
+        val appInstalled: Boolean = try {
             val packageManager = context.packageManager
             packageManager.getPackageInfo(uri,PackageManager.GET_META_DATA)
             true

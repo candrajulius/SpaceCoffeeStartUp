@@ -77,7 +77,7 @@
                 android:layout_height="30dp"
                 android:layout_marginStart="12dp"
                 android:contentDescription="@string/item_description"
-                android:src="@drawable/ersada_coffee"
+                android:src="@drawable/icon_my_app"
                 app:layout_constraintBottom_toBottomOf="@+id/textTitle"
                 app:layout_constraintStart_toEndOf="@id/backCardView"
                 app:layout_constraintTop_toTopOf="@+id/textTitle"
@@ -245,24 +245,154 @@
                     android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:text="Pilih Jenis Coffee"
+                app:layout_constraintEnd_toEndOf="@+id/text_input_wa"
+                app:layout_constraintStart_toStartOf="@+id/text_input_wa"
+                app:layout_constraintTop_toBottomOf="@id/text_input_wa"
+                android:layout_marginTop="10dp"
+                android:id="@+id/text_jenis_coffee" />
+
+           <RadioGroup
+               android:id="@+id/rg_pilihan_item"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               android:layout_marginTop="10dp"
+               android:orientation="horizontal"
+               app:layout_constraintTop_toBottomOf="@id/text_jenis_coffee"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+
+            <RadioButton
+                android:layout_marginStart="10dp"
+                android:id="@+id/rb_bubuk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bubuk Kopi" />
+
+               <RadioButton
+                   android:layout_marginStart="10dp"
+                   android:id="@+id/rb_biji"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Biji Kopi" />
+
+           </RadioGroup>
+
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_input_drop_down"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:id="@+id/text_input_note"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
+                app:counterMaxLength="1000"
+                app:counterEnabled="true"
                 android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_input_wa">
+                app:layout_constraintTop_toBottomOf="@+id/rg_pilihan_item">
 
-                <AutoCompleteTextView
-                    android:hint="Pilih jenis coffee"
-                    android:id="@+id/auto_complete_coffee"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:hint="catatan untuk penjual"
+                    android:id="@+id/edt_note"
+                    android:maxLines="5"
+                    android:lines="5"
+                    android:gravity="top"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/text_input_note"
+                android:text="Pembayaran"
+                android:id="@+id/tvPembayaran"
+                app:layout_constraintStart_toStartOf="@id/text_input_note"
+                app:layout_constraintEnd_toEndOf="@id/text_input_note"
+                android:layout_marginTop="10dp"
+                />
+
+            <HorizontalScrollView
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="30dp"
+                android:id="@+id/horizontal_scrool_chip"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPembayaran"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:singleSelection="true"
+                    app:layout_constraintTop_toBottomOf="@id/tvPembayaran"
+                    app:layout_constraintEnd_toEndOf="@id/tvPembayaran"
+                    app:layout_constraintStart_toStartOf="@id/tvPembayaran"
+                    android:id="@+id/chip_group">
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        style="@style/customStyleChip"
+                        android:text="Tunai"
+                        android:textAlignment="center"
+                        android:id="@+id/chip_tunai" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="130dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_height="wrap_content"
+                        style="@style/customStyleChip"
+                        android:text="Non Tunai"
+                        android:textAlignment="center"
+                        android:id="@+id/chip_non_tunai" />
+
+                </com.google.android.material.chip.ChipGroup>
+
+            </HorizontalScrollView>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_rekening"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:visibility="visible"
+                android:enabled="false"
+                android:layout_marginTop="10dp"
+                android:gravity="bottom"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/horizontal_scrool_chip">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:hint="Nmr Rekening"
+                    android:id="@+id/edt_rekening"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content"
+                android:text="Silahkan kirim bukti transfer ke penjual"
+                android:textColor="@color/teal_200"
+                app:layout_constraintTop_toBottomOf="@id/text_input_rekening"
+                app:layout_constraintStart_toStartOf="@id/text_input_rekening"
+                app:layout_constraintEnd_toEndOf="@id/text_input_rekening"
+                android:id="@+id/catatan_nmr_rekening" />
 
 
             <com.google.android.material.button.MaterialButton
@@ -279,8 +409,7 @@
                 android:enabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_input_drop_down" />
-
+                app:layout_constraintTop_toBottomOf="@id/catatan_nmr_rekening" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

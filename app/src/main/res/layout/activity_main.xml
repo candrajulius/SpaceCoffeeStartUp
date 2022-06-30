@@ -51,7 +51,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginEnd="5dp"
-                android:src="@drawable/ersada_coffee"
+                android:src="@drawable/icon_my_app"
                 app:layout_constraintTop_toTopOf="@id/textTitle"
                 app:layout_constraintBottom_toBottomOf="@id/textTitle"
                 android:contentDescription="@string/item_description" />
@@ -94,11 +94,11 @@
             android:focusable="true"
             android:id="@+id/menu_one"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="150dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="10dp"
-            app:cardCornerRadius="15dp"
+            app:cardCornerRadius="20dp"
             app:cardElevation="8dp">
 
             <LinearLayout
@@ -109,9 +109,10 @@
                 android:padding="16dp">
 
                 <ImageView
+                    android:src="@drawable/menu_one"
+                    android:id="@+id/image_one"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/menu_one"
                      />
 
                 <com.google.android.material.textview.MaterialTextView
