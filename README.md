@@ -1,5 +1,5 @@
-# Ersada Coffee App
-Ersada Coffee is an application that sells coffee beans and coffee grounds in North Sumatra. Where buyers can buy coffee at affordable prices
+# Happy Dance Coffee
+Happy Dance Coffee is an application that sells coffee beans and coffee grounds in North Sumatra. Where buyers can buy coffee at affordable prices
 
 ## Library Used
 * [Material Google Design](https://material.io/design) -> **Design**
