@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.candra.trainingkopdig">
 
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -24,13 +25,19 @@
         </activity>
 
         <activity android:name=".activity.DetailActivity"
-            android:theme="@style/Theme.TrainingKopdig.NoActionBar"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.TrainingKopdig.NoActionBar"
+            tools:ignore="LockedOrientationActivity" />
 
         <activity android:name=".activity.MenuMainCoffee"
-            android:theme="@style/Theme.TrainingKopdig.NoActionBar" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.TrainingKopdig.NoActionBar"
+            tools:ignore="LockedOrientationActivity" />
 
         <activity android:name=".activity.CartActivity"
-            android:theme="@style/Theme.TrainingKopdig.NoActionBar"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.TrainingKopdig.NoActionBar"
+            tools:ignore="LockedOrientationActivity" />
     </application>
 
     <queries> <package android:name="com.whatsapp" /> </queries>

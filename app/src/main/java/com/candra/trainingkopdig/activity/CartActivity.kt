@@ -6,12 +6,15 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import com.candra.trainingkopdig.R
 import com.candra.trainingkopdig.databinding.DialogFragmentCartBinding
 import com.candra.trainingkopdig.helper.Animation
+import com.candra.trainingkopdig.helper.Constant
+import com.candra.trainingkopdig.helper.Constant.isDarkMode
 import java.text.DecimalFormat
 
 class CartActivity: AppCompatActivity()
@@ -24,6 +27,8 @@ class CartActivity: AppCompatActivity()
     private var formatData = ""
     private var selectedValuePayment = ""
     private var valueNote = ""
+    private var paymentRekening = ""
+    private var people = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +43,11 @@ class CartActivity: AppCompatActivity()
 
         setDefaultKindCoffee()
 
+        setHandlerDarkMode()
+
+        setDefaultPayment()
+
+        setDefaultNumberRekening()
 
     }
 
@@ -49,11 +59,11 @@ class CartActivity: AppCompatActivity()
     private fun validationData(){
         with(binding){
 
-            edtRekening.setText(getString(R.string.nmr_rekening))
 
             chipTunai.setOnClickListener {
                 setVisibility(false)
             }
+
             chipNonTunai.setOnClickListener {
                 setVisibility(true)
             }
@@ -68,7 +78,6 @@ class CartActivity: AppCompatActivity()
                 validationButton()
             }
 
-
             textEditAlamat.doAfterTextChanged {
                 val alamatValid = it?.isNotBlank()?: false
                 isValid[1] = alamatValid
@@ -78,6 +87,7 @@ class CartActivity: AppCompatActivity()
                 }
                 validationButton()
             }
+
             textEditNmrHp.doAfterTextChanged {
                 val nmrHpValid = it?.isNotBlank()?: false
                 isValid[2] = nmrHpValid
@@ -117,6 +127,19 @@ class CartActivity: AppCompatActivity()
                 validationButton()
             }
 
+            if (rgPilihanItem.checkedRadioButtonId > 0) {
+                when (rgPilihanItem.checkedRadioButtonId) {
+                    R.id.rb_biji ->{
+                        selectedValue = "Biji Kopi"
+                        peopleRekening.text = selectedValue
+                    }
+                    R.id.rb_bubuk ->{
+                        selectedValue = "Bubuk Kopi"
+                        peopleRekening.text = selectedValue
+                    }
+                }
+            }
+
             binding.textInputNameCoffee.isEnabled = false
 
 
@@ -139,6 +162,7 @@ class CartActivity: AppCompatActivity()
                     valueNote = note
                 }
 
+
                 if (rgPilihanItem.checkedRadioButtonId > 0){
                     when(rgPilihanItem.checkedRadioButtonId){
                         R.id.rb_biji -> selectedValue = "Biji Kopi"
@@ -153,12 +177,14 @@ class CartActivity: AppCompatActivity()
                 }else if (chipNonTunai.isChecked){
                     selectedValuePayment =  chipNonTunai.text.toString()
                 }
-                sendMessageToWA(name,alamat,nmrHp,nmrWa,sachet,selectedValue,nameCoffee,valueNote,selectedValuePayment)
+                sendMessageToWA(
+                    name,alamat,nmrHp,nmrWa,sachet,selectedValue,nameCoffee
+                    ,valueNote
+                    ,selectedValuePayment
+                ,paymentRekening,people)
             }
-
         }
     }
-
 
     private fun validationButton(){
         binding.btnConfirmation.isEnabled = isValid.filter { it }.size == 5
@@ -166,7 +192,9 @@ class CartActivity: AppCompatActivity()
 
     private fun setVisibility(show: Boolean){
         binding.textInputRekening.visibility = if (show) View.VISIBLE else View.GONE
+        binding.peopleRekening.visibility = if (show) View.VISIBLE else View.GONE
         binding.catatanNmrRekening.visibility = if (show) View.VISIBLE else View.GONE
+        binding.rgChoosePayment.visibility = if (show) View.VISIBLE else View.GONE
     }
 
     private fun sendMessageToWA(
@@ -178,12 +206,15 @@ class CartActivity: AppCompatActivity()
         kindCoffee: String,
         nameCoffee: String,
         note: String,
-        pay: String
+        pay: String,
+        nmrRekening: String,
+        people: String
     )
     {
-        val phone = 6282311558341
+        val phone = getString(R.string.admin)
         val sendMessage = "Nama Kopi: $nameCoffee \n Nama: $name, \n Alamat: $alamat, \n Nmr HP: $nmrHp, \n Nmr WA: $nmrWa, \n Sachet: $sachet, \n Jenis Kopi: $kindCoffee, \n Harga: $formatData" +
-                "\n Catatan: $note \n Pembayaran: $pay"
+                "\n Catatan: $note, \n Pembayaran: $pay, \n Nomor Rekening: $nmrRekening, \n" +
+                "Atas nama rekening: $people"
         val parsingUri = Uri.parse("https://wa.me/$phone?text=$sendMessage")
         if (Animation.appInstalled(this@CartActivity,"com.whatsapp")){
             Intent(Intent.ACTION_VIEW,parsingUri).also { startActivity(it) }
@@ -198,5 +229,48 @@ class CartActivity: AppCompatActivity()
             setVisibility(show = false)
         }
     }
+
+    private fun setDefaultNumberRekening(){
+        binding.apply {
+            briPayment.isChecked = true
+            edtRekening.setText(Constant.BRI)
+            peopleRekening.text = Constant.PEOPLE_2
+        }
+    }
+
+    fun paymentRekening(view: View) {
+        if (view is RadioButton){
+            when(view.id){
+                R.id.bri_payment -> {
+                    paymentRekening = Constant.BRI
+                    people = Constant.PEOPLE_2
+                    binding.edtRekening.setText(paymentRekening)
+                    binding.peopleRekening.text = getString(R.string.atas_nama,people)
+                }
+                R.id.bca_payment -> {
+                    paymentRekening = Constant.BCA
+                    people = Constant.PEOPLE_1
+                    binding.edtRekening.setText(paymentRekening)
+                    binding.peopleRekening.text = getString(R.string.atas_nama,people)
+                }
+                R.id.bni_payment -> {
+                    paymentRekening = Constant.BNI
+                    people = Constant.PEOPLE_1
+                    binding.edtRekening.setText(paymentRekening)
+                    binding.peopleRekening.text = getString(R.string.atas_nama,people)
+                }
+            }
+        }
+    }
+
+    private fun setHandlerDarkMode(){
+        binding.apply {
+            backArrow.setImageResource(
+                if (isDarkMode) R.drawable.ic_baseline_arrow_back_white
+            else R.drawable.ic_baseline_arrow_back_ios_24
+            )
+        }
+    }
+
 
 }

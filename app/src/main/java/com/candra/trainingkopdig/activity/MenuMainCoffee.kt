@@ -6,9 +6,11 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.candra.trainingkopdig.R
 import com.candra.trainingkopdig.adapter.CoffeeAdapter
 import com.candra.trainingkopdig.databinding.MenuMainCoffeeBinding
 import com.candra.trainingkopdig.helper.Animation
+import com.candra.trainingkopdig.helper.Constant.isDarkMode
 import com.candra.trainingkopdig.model.response.ResponseModel
 import com.candra.trainingkopdig.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,6 +28,16 @@ class MenuMainCoffee: AppCompatActivity()
         binding = MenuMainCoffeeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setData()
+        setHandleDarkMode()
+    }
+    
+    private fun setHandleDarkMode(){
+        binding.apply {
+            backArrow.setImageResource(
+                if (isDarkMode) R.drawable.ic_baseline_arrow_back_white
+                else R.drawable.ic_baseline_arrow_back_ios_24
+            )
+        }
     }
 
 

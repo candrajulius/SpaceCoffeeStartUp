@@ -360,6 +360,43 @@
 
             </HorizontalScrollView>
 
+            <RadioGroup
+                android:layout_marginStart="20dp"
+                android:id="@+id/rg_choose_payment"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/horizontal_scrool_chip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:layout_marginStart="10dp"
+                    android:id="@+id/bri_payment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="paymentRekening"
+                    android:text="BRI" />
+
+                <RadioButton
+                    android:onClick="paymentRekening"
+                    android:layout_marginStart="10dp"
+                    android:id="@+id/bni_payment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BNI" />
+
+                <RadioButton
+                    android:onClick="paymentRekening"
+                    android:layout_marginStart="10dp"
+                    android:id="@+id/bca_payment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BCA" />
+
+            </RadioGroup>
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/text_input_rekening"
@@ -374,7 +411,7 @@
                 android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/horizontal_scrool_chip">
+                app:layout_constraintTop_toBottomOf="@+id/rg_choose_payment">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:hint="Nmr Rekening"
@@ -387,11 +424,22 @@
                 android:layout_width="0dp"
                 android:layout_marginTop="5dp"
                 android:layout_height="wrap_content"
-                android:text="Silahkan kirim bukti transfer ke penjual"
-                android:textColor="@color/teal_200"
+                android:textStyle="bold"
+                android:textSize="15sp"
                 app:layout_constraintTop_toBottomOf="@id/text_input_rekening"
                 app:layout_constraintStart_toStartOf="@id/text_input_rekening"
                 app:layout_constraintEnd_toEndOf="@id/text_input_rekening"
+                android:id="@+id/people_rekening" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content"
+                android:text="Silahkan kirim bukti transfer ke penjual"
+                android:textColor="@color/teal_200"
+                app:layout_constraintTop_toBottomOf="@id/people_rekening"
+                app:layout_constraintStart_toStartOf="@id/people_rekening"
+                app:layout_constraintEnd_toEndOf="@id/people_rekening"
                 android:id="@+id/catatan_nmr_rekening" />
 
 
